@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"  media="all"/>
+</head>
+<body>
+<form  th:method="post" th:action="@{/index2}">
+<div class="layui-container" style="padding:30px; border: 1px solid #CCCCCC;margin-top: 30px;">
+    <div id="div-pic" style="border:1px solid #CCCCCC;padding:5px; width:215px;">
+        <div  id="pic" style="text-align:center;width:200px; height:210px;" >
+            <img th:id="myimg" th:src="@{/layui/images/640.jpg}" width="100%" height="100%">              
+            </img>
+  
+        </div>
+        <button  type="button" class="layui-btn test333" lay-data="{url:'/upload'}" style="width:200px; background-color:gold" id="test3"><i class="layui-icon">&#xe67c;</i>上传合同</button>
+        <div style="margin-top:15px;">
+           <button id="testbtn" class="layui-btn  layui-btn-disabled" style="width:200px;" data-action="" data-width="680" data-height="900" data-title="test window">合同预览</button>
+            <input th:type="hidden" id="pdf_path" name="pdf_path"/>
+        </div>
+    </div>
+    <input class="layui-btn" style="width: 200px" th:type="submit" id="nextstep" th:value="下一步"/>
+    <input th:id="pdfname" th:name="pdfname"  type="hidden"/>
+</div>
+</form>
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script>
+layui.config({
+    base : '/js/'
+}).extend({
+    duang : 'duang'
+});
+
+layui.use('duang');
+
+    layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+
+        upload.render({
+            elem: '.test333'
+            ,url: '/upload'
+            ,accept: 'file'
+            ,before: function(){
+            	$("#test3").attr("class","layui-btn test333 layui-btn-disabled");
+            	$("#testbtn").attr("layui-btn  layui-btn-disabled");
+            }
+            ,done: function(res){
+            	var json = eval(res);
+            	var img = '/layui/images/2.png';
+                $("#myimg").attr("src",img);
+                $("#pdf_path").val(json.data.src);
+                $("#testbtn").attr("class","layui-btn");
+                $("#test3").attr("class","layui-btn test333");
+                $("#pdfname").val(json.data.title);
+
+            }
+        });
+        $("#testbtn").on("click",function(){
+        	 $("#myimg").attr("src","/layui/images/640.jpg");
+            var url = $("#pdf_path").val();
+            layer.open({
+    			area:['680px','900px'],
+    			title: '合同',
+    			fix: false, // 不固定
+    			maxmin: false,
+    			shadeClose: true,
+    			shade:0.4,
+    			type:2, // 0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+    			content:url
+    		});
+        })
+        
+    });
+
+</script>
+</body>
+</html>

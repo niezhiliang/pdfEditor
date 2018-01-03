@@ -1,0 +1,269 @@
+.div_parent { width: 100%;overflow-y: hidden; overflow-x: auto; white-space: nowrap;height:1246px; }
+.div_child { width: 15%; height:300px;  display: inline-block; margin: 0px;height:1246px;background-color:white ;float: left;}
+.drag-tip {
+    text-align: left;
+    padding: 5px;
+    background: #1b49a0;
+    color: white;
+    margin: 10px;
+    border-radius: 6px;
+}
+.wd.page{
+border: #bdbdbd 1px solid;
+position: relative;
+background-size: 100% 100% !important;
+height: 1170px;
+}
+.mb10 {
+    margin-bottom: 10px !important;
+}
+.mt20 {
+    margin-top: 20px !important;
+}
+.tag-area {
+    width: 93%;
+    line-height: 40px;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    height:50px;
+    margin-left:5px;
+    margin-right:5px;
+}
+.tag-name {
+    border: none;
+    outline: none;
+    width: 100px;
+    float: left;
+    left: 8px;
+    position: relative;
+    border-right: 1px solid red;
+    padding-right: 8px;
+    height: 50px;
+}
+.drag-handle {
+    background: url(/layui/images) no-repeat;
+    display: inline-block;
+    height: 25px;
+    width: 30px;
+    background-position: -98px -204px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+    left: 10px;
+}
+#addTag .w {
+    border-bottom: 1px solid #999;
+    width: 26px;
+    display: inline-block;
+    position: relative;
+    top: -4px;
+}
+#addTag .h {
+    border-left: 1px solid #999;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    height: 26px;
+    left: -16px;
+}
+.delete-tag {
+    display: inline-block;
+    background-position: -67px -199px;
+    position: relative;
+    top: -18px;
+    cursor: pointer;
+    left: 5px;
+}
+#wdTitle {
+    word-wrap: break-word;
+    font-size: 14px;
+    margin-top: 14px;
+    font-weight:bold;
+}
+.wdPages {
+    display: inline !important;
+    padding: 0;
+    margin: 0 !important;
+    font-weight: normal;
+}
+.wd-title {
+    font-size: 14px;
+    margin: 0 17px;
+    word-break: break-all;
+    margin-top: 14px;
+    margin-left: 30px;
+}
+.rightPage.selected {
+    border: 1px solid rgb(255, 221, 0);
+}
+.rightPage {
+    margin: 17px;
+    border: 1px solid #dadada;;
+}
+.tits {
+    position: absolute;
+    font-size: 12px;
+    bottom: 0px;
+    height: 30px;
+    width: 30px;
+    line-height: 34px;
+    color: #fff;
+    padding-left: 1px;
+    padding-top: 5px;
+    text-align: left;
+    background: url(../images/pc/triangle-grey.png) no-repeat;
+}
+.layui-main{
+    position:relative;width:1140px;margin:0 auto;
+    border: none;
+}
+.arrow-right {
+    width:0;
+    height:0;
+    border-top:10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid rgb(255, 221, 0);
+    display:inline-block;
+}
+/*箭头向下*/
+.arrow-down {
+    width:0;
+    height:0;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:10px solid rgb(255, 221, 0);
+    display:inline-block;
+}
+.triangle-left-bottom {
+    width: 0;
+    height: 0;
+    border-top: 28px solid transparent;
+    border-left: 28px solid #dadada;
+    position: absolute;
+    margin-top: -28px;
+}
+.triangle-select {
+    width: 0;
+    height: 0;
+    border-top: 28px solid transparent;
+    border-left: 28px solid rgb(255, 221, 0);
+    position: absolute;
+    margin-top: -28px;
+    float: left;
+}
+.pageno {
+    position: absolute;
+    margin-top: -32px;
+    position: absolute;
+    font-size: 12px;
+    color: #fff;
+    text-align: left;
+}
+.deleteSignBtn {
+    background: url(../images/pc/sign.png) no-repeat;
+    height: 25px;
+    width: 25px;
+    background-position: 0 -23px;
+    display: inline-block;
+}
+.sign-area-bg-select {
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    cursor: move;
+    border-radius: 5px;
+    /* line-height: 134px; */
+    padding-top: 50px;
+    font-size: 24px;
+    color: black;
+    left: 0;
+    font-weight: bold;
+}
+.sign-area {
+    display: block;
+    position: absolute;
+    border: none;
+    float: left;
+}
+.stamp-draged {
+    border: 2px dotted #1b49a0;
+    border-radius: 4px;
+}
+.sign-border {
+    border: 2px dotted black;
+    border-radius: 4px;
+}
+.sign-content {
+    width: 210px;
+    height: 134px;
+    display: inline-block;
+    cursor: move;
+    background: #767676;
+    filter: alpha(opacity=15);
+    -moz-opacity: 0.15;
+    -khtml-opacity: 0.15;
+    opacity: 0.15;
+    border-radius: 5px;
+    /* line-height: 134px; */
+    padding-top: 50px;
+    border: 1px dashed #767676;
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+#defaultSignArea {
+    position: absolute;
+    z-index: 10;
+    display: none;
+    cursor: move;
+}
+#header {
+    height: 65px;
+    text-align: center;
+    width: 100%;
+    min-width: 1200px;
+    background-color: #1b49a0;
+}
+#headerContent {
+    width: 1200px;
+    height: 65px;
+    display: inline-block;
+}
+
+.header-inside-Nav {
+    width: 1200px;
+    height: 50px;
+    margin: 0 auto;
+    line-height: 50px;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+}
+.btn-save-draft {
+    width: 82px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #337be7;
+    margin-top: 5px;
+    border-radius: 2px;
+    background: #1b49a0;
+    font-size: 12px;
+}
+.mt0 {
+    margin-top: 0 !important;
+}
+
+.btn-document-search {
+    width: 66px;
+    height: 34px;
+    line-height: 34px;
+    padding: 0;
+    color: black;
+    background-color: #ffc820;
+    border: 1px solid #ffc820;
+}
+

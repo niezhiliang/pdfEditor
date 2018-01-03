@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"  media="all"/>
+    <link rel="stylesheet" th:href="@{/page_1.css}"/>
+    <link rel="stylesheet" th:href="@{/jqueryui/jqueryui.css}"/>
+    <script type="text/javascript" src="/jqueryui/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/jqueryui/jqueryui.min.js}"></script>
+</head>
+
+<body style="background-color: #f1f1f1">
+<div id="header" style="height:50px">
+    <div id="headerContent" style="line-height: 50px">
+        <div id="header-inside">
+            <div class="header-inside-Nav">
+                <a href="uploadDocPage.action?documentId=1504770142021212303" id="backUrl" class="a-nochange"><img src="/eds/statics/images/pc/docReturn.png&#10;" alt="返回" style="width: 100%;width: 21px;height: 21px;"/>返回</a>
+                <span id="docName">test3</span>
+            </div>
+            <div id="profile" class="mr20" style="margin-top: -40px; line-height: 30px; display: none;">
+                <ul class="list-inline" style="margin: 0;">
+                    <li><a href="http://kf.wenqian.cn/hc" target="_blank">帮助</a></li>
+                </ul>
+            </div>
+            <div id="buttomArea" style="float: right; margin-top:-40px; line-height: 30px;">
+                <button type="button" class="btn btn-save-draft mt0" style="width:100px;font-size:12px; color:#a3c8ff;" id="D-saveDraft">取消</button>
+                <button type="button" class="btn btn-document-search" style="width:100px;font-size:12px;margin-left:15px; height: 30px;line-height: 30px;" id="D-NextStep">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-main">
+    <div class="div_parent" >
+        <div class="div_child" style="border-right:1px solid rgb(241, 241, 241)" >
+            <div class="drag-tip">
+                点选下列签署方并放置到合同中需要签署的位置。请尽量不要遮挡合同条款。
+            </div>
+            <div style="font-weight: bold; text-align:center;" class="mb10 mt20">签署方</div>
+            <div class="tag-area" index="0" style="border-color: rgb(239, 126, 37);">
+                <input value="甲方" class="tag-name" maxlength="12" style="border-right-color: rgb(239, 126, 37);"/>
+                <span class="drag-handle" style="left: 0;"></span>
+            </div>
+            <div class="tag-area" index="1" style="border-color: rgb(116, 153, 225);">
+                <input value="乙方" class="tag-name" maxlength="12" style="border-color: rgb(116, 153, 225);"/>
+                <span class="drag-handle" style="left: 0;"></span>
+                <span class="delete-tag layui-badge">x</span>
+            </div>
+            <div id="addTag" class="tag-area" style="border-color: rgb(190, 190, 190);cursor:pointer;">
+                <div style="margin-left:60px; margin-top:6px;">
+                    <span class="w"></span>
+                    <span class="h"></span>
+                </div>
+            </div>
+        </div>
+        <div  class="div_child" style="width: 69%; overflow-y:scroll;"><!-- -->
+           <div id="page_div">
+               <!--<div id="defaultSignArea" data-i="0" style="top:130px; display: block;">-->
+                   <!--<div class="sign-border" style="width: 257.19px; height: 179.286px; border-color: rgb(239, 126, 37);">-->
+                        <!--<span class="sign-content" style="width: 257.19px; height: 130.286px; border-color: rgb(239, 126, 37); background-color: rgb(239, 126, 37); text-align: center; color: red;">-->
+                        <!--甲方<br/>签署区域-->
+                        <!--</span>-->
+                   <!--</div>-->
+               <!--</div>;-->
+               <span th:each="item ,stat: ${imglist}">
+                   <div th:id="${'13ed9306-4a32-4770-8493-fd14d915f91b_'+stat.count+''}" class="wd page" th:style="${'background-image:url('''+item+''');'} "></div>
+                   <div align="center" style="height: 20px;"><span th:text="${stat.count}"></span></div>
+               </span>
+           </div>
+        </div>
+        <div class="div_child" style="overflow-y:scroll;">
+            <div style="margin-top:5px;">
+                <div style="cursor: pointer; padding-left:10px;padding-right:10px;">
+                    <h4 id="wdTitle">
+                        <div id="openorhide" class="arrow-down">
+                            <!--&lt;!&ndash;向右的三角&ndash;&gt;-->
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="contract_title" class="margin-left:20px;" th:text="${pdfname}"></span>
+                            <div style="text-align:center;">
+                                <span id="contract_pages" style="font-weight: normal;text-align:center;" th:text="${'('+imgsize+'页)'}"> （6页）</span>
+                            </div>
+
+                    </h4>
+                 </div>
+                <div id="imgdiv">
+                <span id="imgspan" th:each="item ,stat: ${imglist}">
+                    <div th:class="${stat.count eq 1}? 'rightPage wd selected' : 'rightPage wd'" th:page-id="${'page_13ed9306-4a32-4770-8493-fd14d915f91b_'''+stat.count+''}" th:data-index="${stat.count}" style="display: block;">
+                        <div style="position: relative;">
+                            <div class="mark-icon"></div>
+                        </div>
+                        <a class="a_cls" id="rightPage_13ed9306-4a32-4770-8493-fd14d915f91b_1"></a>
+                        <a class="pageright" href="javascript:void(0)" th:name="${'13ed9306-4a32-4770-8493-fd14d915f91b_'+stat.count+''}">
+
+                            <img width="100%" class="view-image" style="min-height: 50px;" th:src="${item}"/>
+                        </a>
+                    <!--左下角的三角图形-->
+                        <div th:class="${stat.count eq 1}? 'triangle-select' :'triangle-left-bottom'" style="position: relative"></div>
+
+                    </div>
+                </span>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.define(['jquery'],function(exports){
+        "use strict";
+        var $ = layui.jquery;
+        $(document).on("click","#addTag",function(){
+            var arr = new Array("乙方","丙方","丁方","戊方","己方");
+            var obj = $("#addTag");
+            var page = obj.prev().attr("index");
+            var num = parseInt(page)+1;
+            var doc =
+            '<div class="tag-area" index="'+num+'"  style="border-color: rgb(116, 153, 225);">'+
+                '<input value="'+arr[page] +'" class="tag-name" maxlength="12" style="border-color: rgb(116, 153, 225);"/>'+
+                '<span class="drag-handle" style="left: 0;"></span>'+
+                '<span class="delete-tag layui-badge">x</span>'+
+            '</div>';
+            $(doc).insertBefore(obj);
+            if (num == arr.length) {
+                $(this).remove();
+            }
+        });
+
+         $(document).on("click" , ".delete-tag" ,function () {
+            var page = $(this).parent().attr("index");
+            if (page == '5') {
+            var doc =
+                     '<div id="addTag" class="tag-area" style="border-color: rgb(190, 190, 190);cursor:pointer;">'+
+                        '<div style="margin-left:60px; margin-top:6px;">'+
+                            '<span class="w"></span>'+
+                            '<span class="h"></span>'+
+                        '</div>'+
+                    '</div>';
+                $(doc).insertBefore($(this).parent());
+
+            }
+             var obj = $(this);
+             $(obj).parent().hide();
+         })
+
+        $(".rightPage").on("click",function(){
+            $(".rightPage").attr("class","rightPage wd");
+            $(this).attr("class","rightPage wd selected");
+            $(".triangle-select").attr("class","triangle-left-bottom");
+            $($(this).children('div')[1]).attr("class","triangle-select");
+        });
+
+        $("#openorhide").on("click",function(){
+             var divclass = $(this).attr("class");
+             if (divclass == 'arrow-down') {
+                 $(this).attr("class","arrow-right");
+                 $("#imgdiv").hide(500);
+             }
+             else {
+                 $(this).attr("class","arrow-down");
+                 $("#imgdiv").show(500);
+             }
+        })
+//        $(document).on("click",".drag-handle",function () {
+//            $("#page_div").mouseenter(function(e){
+//               // mousemove(e);
+//
+//            });
+//
+//        })
+
+        /**
+         *签名区域移动时,点击鼠标后不再随鼠标移动
+         * */
+        /*$(document).one("click",".sign-border",function() {
+          $("#page_div").unbind('mouseenter');
+          $("#defaultSignArea").css("position","relative");
+        })*/
+
+        $(document).on("mousedown",".sign-border",function(){
+            $( ".signbox" ).draggable({ containment: "#page_div", scroll: false });
+            var top = $(".sign-border").css("top");
+            var left = $(".sign-border").css("left");
+
+        })
+        $(document).on("mouseup",".sign-border",function(){
+            var top = $(".sign-border").css("top");
+            var left = $(".sign-border").css("left");
+             $(".signbox").css("height",parseInt(top)+179.286).css("width",parseInt(left)+253.19);
+        })
+        /**
+         * 添加签署区域
+         * */
+        $(document).on("click",".drag-handle",function () {
+            var top = parseInt(this.offsetTop);
+            var name = $(this).prev().val();
+            var div = $("#13ed9306-4a32-4770-8493-fd14d915f91b_1");
+            var color = $(this).parent().css("border-color");
+            var  doc =
+                '<div id="defaultSignArea" class="signbox" data-i="0" draggable="true" style="width:257.19px; height:'+top+'; display: block;">'+
+                    '<span class="layui-badge sign-delete" style="cursor: pointer;margin-left: 250.19px;">x</span>'+
+                   '<div class="sign-border" style="width: 253.19px; height: 175.286px; border-color:' +color+';">'+
+
+                        '<span class="sign-content" style="width: 253.19px; height: 125.286px; border-color: '+color+'; background-color: '+color+'; text-align: center; color: red;">'+
+                        name+'<br/>签署区域'+
+                        '</span>'+
+                //'<img id="sign" th:src="@{/layui/images/nzl.png}" style="width:100px;height:40px; position: absolute"/>'+
+                    '</div>'+
+                 '</div>';
+//           '<div style="top: 757px;left:118px;position: relative">'+ '<img th:src="@{/layui/images/nzl.png}" style="width:100px;height:40px;"/>'+ '</div>';
+            div.append(doc);
+
+        })
+        /**
+         * 删除签名区域
+         */
+        $(document).on("click",".sign-delete",function () {
+            $(this).parent("div").remove();
+        })
+
+        $(".pageright").on("click",function () {
+            var id_index = $(this).attr("name");
+            document.getElementById(id_index).scrollIntoView();
+        });
+
+    })
+
+</script>
+
+</body>
+</html>

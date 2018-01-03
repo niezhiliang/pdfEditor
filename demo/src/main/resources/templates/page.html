@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}"  media="all"/>
+    <link rel="stylesheet" th:href="@{/page_1.css}"/>
+    <style>
+    </style>
+</head>
+
+<body style="background-color: #f1f1f1">
+<div class="layui-main" style="margin-top:40px;">
+    <div class="div_parent" >
+        <div class="div_child" style="border-right:1px solid rgb(241, 241, 241)" >
+            <div class="drag-tip">
+                点选下列签署方并放置到合同中需要签署的位置。请尽量不要遮挡合同条款。
+            </div>
+            <div style="font-weight: bold; text-align:center;" class="mb10 mt20">签署方</div>
+            <div class="tag-area" index="0" style="border-color: rgb(239, 126, 37);">
+                <input value="甲方" class="tag-name" maxlength="12" style="border-right-color: rgb(239, 126, 37);"/>
+                <span class="drag-handle" style="left: 0;"></span>
+            </div>
+            <div class="tag-area" index="1" style="border-color: rgb(116, 153, 225);">
+                <input value="乙方" class="tag-name" maxlength="12" style="border-color: rgb(116, 153, 225);"/>
+                <span class="drag-handle" style="left: 0;"></span>
+                <span  class="delete-tag"></span>
+            </div>
+            <div id="addTag" class="tag-area" style="border-color: rgb(190, 190, 190);cursor:pointer;">
+                <div style="margin-left:60px; margin-top:6px;">
+                    <span class="w"></span>
+                    <span class="h"></span>
+                </div>
+            </div>
+        </div>
+        <div class="div_child" style="width: 69%; overflow-y:scroll;">
+           <div>
+               <div class="wd page" style="background-image: url('http://huluwa-pdf.oss-cn-qingdao.aliyuncs.com/1.jpg')">
+
+               </div>
+               <div align="center" style="height: 20px;">1</div>
+               <div class="wd page" style="background-image: url('http://huluwa-pdf.oss-cn-qingdao.aliyuncs.com/1.jpg')">
+
+               </div>
+               <div align="center" style="height: 20px;">2</div>
+           </div>
+        </div>
+        <div class="div_child" style="overflow-y:scroll;">
+            <div style="margin-top:5px;">
+                <div style="cursor: pointer; padding-left:10px;padding-right:10px;">
+                    <h4 id="wdTitle">
+                        <div id="openorhide" class="arrow-down">
+                            <!--&lt;!&ndash;向右的三角&ndash;&gt;-->
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span id="contract_title" class="margin-left:20px;">test0</span>
+                            <div style="text-align:center;">
+                                <span id="contract_pages" style="font-weight: normal;text-align:center;"> （7页）</span>
+                            </div>
+
+                    </h4>
+                 </div>
+                <div id="imgdiv">
+                <div class="rightPage wd selected" page-id="page_13ed9306-4a32-4770-8493-fd14d915f91b_1" data-index="1" style="display: block;">
+                    <div style="position: relative;">
+                        <div class="mark-icon"></div>
+                    </div>
+                    <a class="a_cls" id="rightPage_13ed9306-4a32-4770-8493-fd14d915f91b_1"></a>
+                    <a href="javascript:document.getElementById('13ed9306-4a32-4770-8493-fd14d915f91b_1').scrollIntoView();">
+
+                        <img width="100%" class="view-image" style="min-height: 50px;" th:src="@{/layui/images/1.jpg}"/>
+                    </a>
+                    <!--左下角的三角图形-->
+                    <div class="triangle-select"></div>
+
+                </div>
+                <div class="rightPage wd" page-id="page_13ed9306-4a32-4770-8493-fd14d915f91b_1" data-index="1" style="display: block;">
+                    <div style="position: relative;">
+                        <div class="mark-icon"></div>
+                    </div>
+                    <a class="a_cls" id="rightPage_13ed9306-4a32-4770-8493-fd14d915f91b_1"></a>
+                    <a href="javascript:document.getElementById('13ed9306-4a32-4770-8493-fd14d915f91b_1').scrollIntoView();">
+
+                        <img width="100%" class="view-image" style="min-height: 50px;" th:src="@{/layui/images/1.jpg}"/>
+                    </a>
+                    <!--左下角的三角图形-->
+                    <div class="triangle-left-bottom"></div>
+                </div>
+                <div class="rightPage wd " page-id="page_13ed9306-4a32-4770-8493-fd14d915f91b_1" data-index="1" style="display: block;">
+                    <div style="position: relative;">
+                        <div class="mark-icon"></div>
+                    </div>
+                    <a class="a_cls" id="rightPage_13ed9306-4a32-4770-8493-fd14d915f91b_1"></a>
+                    <a href="javascript:document.getElementById('13ed9306-4a32-4770-8493-fd14d915f91b_1').scrollIntoView();">
+
+                        <img width="100%" class="view-image" style="min-height: 50px;" th:src="@{/layui/images/1.jpg}"/>
+                    </a>
+                    <!--左下角的三角图形-->
+                    <div id="pagefoot" class="triangle-left-bottom"></div>
+                </div>
+                <div class="rightPage wd" page-id="page_13ed9306-4a32-4770-8493-fd14d915f91b_1" data-index="1" style="display: block;">
+                    <div style="position: relative;">
+                        <div class="mark-icon"></div>
+                    </div>
+                    <a class="a_cls" id="rightPage_13ed9306-4a32-4770-8493-fd14d915f91b_1"></a>
+                    <a href="javascript:document.getElementById('13ed9306-4a32-4770-8493-fd14d915f91b_1').scrollIntoView();">
+
+                        <img width="100%" class="view-image" style="min-height: 50px;" th:src="@{/layui/images/1.jpg}"/>
+                    </a>
+                    <!--左下角的三角图形-->
+                    <div class="triangle-left-bottom"></div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+<script>
+    layui.define(['jquery'],function(exports){
+        "use strict";
+        var $ = layui.jquery;
+        $(document).on("click","#addTag",function(){
+            var arr = new Array("乙方","丙方","丁方","戊方","己方");
+            var obj = $("#addTag");
+            var index = obj.prev().attr("index");
+            var num = parseInt(page)+1;
+            var doc =
+            '<div class="tag-area" index="'+num+'"  style="border-color: rgb(116, 153, 225);">'+
+                '<input value="'+arr[page] +'" class="tag-name" maxlength="12" style="border-color: rgb(116, 153, 225);"/>'+
+                '<span class="drag-handle" style="left: 0;"></span>'+
+                '<span  class="delete-tag" ></span>'+
+            '</div>';
+            $(doc).insertBefore(obj);
+            if (num == arr.length) {
+                $(this).remove();
+            }
+        });
+
+
+         $(document).on("click" , ".delete-tag" ,function () {
+            var index = $(this).parent().attr("index");
+            if (page == '5') {
+            var doc =
+                     '<div id="addTag" class="tag-area" style="border-color: rgb(190, 190, 190);cursor:pointer;">'+
+                        '<div style="margin-left:60px; margin-top:6px;">'+
+                            '<span class="w"></span>'+
+                            '<span class="h"></span>'+
+                        '</div>'+
+                    '</div>';
+                $(doc).insertBefore($(this).parent());
+
+            }
+             var obj = $(this);
+             $(obj).parent().remove();
+         })
+
+        $(".rightPage").on("click",function(){
+            $(".rightPage").attr("class","rightPage wd");
+            $(this).attr("class","rightPage wd selected");
+            $(".triangle-select").attr("class","triangle-left-bottom");
+            $($(this).children('div')[1]).attr("class","triangle-select");
+        });
+
+        $("#openorhide").on("click",function(){
+             var divclass = $(this).attr("class");
+             if (divclass == 'arrow-down') {
+                 $(this).attr("class","arrow-right");
+                 $("#imgdiv").hide(500);
+             }
+             else {
+                 $(this).attr("class","arrow-down");
+                 $("#imgdiv").show(500);
+             }
+        })
+    })
+
+</script>
+
+</body>
+</html>

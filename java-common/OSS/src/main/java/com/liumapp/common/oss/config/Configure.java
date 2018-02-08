@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component("OSSConfigure")
 public class Configure {
 
-    private String AccessKeyId = "HLUmOSIDpYentPOt";
+    private String AccessKeyId = "xxx";
 
-    private String AccessKeySecret = "DGKjmYhJYq9CBSLAVkKebMXGH056l2";
+    private String AccessKeySecret = "xxx";
 
     private String AccessBaseUrl = "http://huluwa-pdf.oss-cn-qingdao.aliyuncs.com";
 
